@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/dashboard"
+        android:title="@string/dashboard" />
+
+    <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/cart"
+        android:title="@string/cart" />
+
+    <item
+        android:id="@+id/navigation_notifications"
+        android:icon="@drawable/planner"
+        android:title="@string/my_courses" />
+
+    <item
+        android:id="@+id/navigation_examplanner"
+        android:icon="@drawable/examplanner"
+        android:title="@string/exam" />
+
+    <item
+        android:id="@+id/navigation_more"
+        android:icon="@drawable/more"
+        android:title="@string/more" />
+
+
+</menu>

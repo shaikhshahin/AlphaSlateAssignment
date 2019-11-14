@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">AlphaSlateDemo</string>
+
+    <string name="dashboard">dashboard</string>
+    <string name="cart">cart</string>
+    <string name="my_courses">my courses</string>
+    <string name="exam">exam planner</string>
+    <string name="more">more</string>
+
+
+    <string name="settings">Settings</string>
 </resources>
