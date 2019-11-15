@@ -6,6 +6,8 @@
     <color name="row_title_color">#484848</color>
     <color name="row_datetime_color">#dbdbdb</color>
     <color name="bg_color">#d3d3d3</color>
+    <color name="white">#fff</color>
+    <color name="black">#000</color>
 
 
 </resources>

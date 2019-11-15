@@ -26,12 +26,24 @@ class HomeRecyclerAdapter(var home_list: List<HomeItem>) :
         val time = home_list[position].time
         val date = home_list[position].date
         val grade = home_list[position].grade
+        val status = home_list[position].status
 
 
         holder.title.text = title
         holder.time.text = time
         holder.date.text = date
         holder.grade.text = grade
+        holder.status.text = status
+        if(status.equals("Completed")){
+            holder.status.setBackgroundResource(R.drawable.greenrectangle)
+        }else if(status.equals("In Progress")){
+            holder.status.setBackgroundResource(R.drawable.yellowrectangle)
+        }else{
+            holder.status.setBackgroundResource(R.drawable.redrectangle)
+
+        }
+
+
 
 
     }
@@ -46,12 +58,14 @@ class HomeRecyclerAdapter(var home_list: List<HomeItem>) :
         val grade: TextView
 
         val date: TextView
+        val status: TextView
 
         init {
             title = mView.findViewById(R.id.item_title)
             time = mView.findViewById(R.id.item_time)
             date = mView.findViewById(R.id.item_date)
             grade = mView.findViewById(R.id.item_grade)
+            status = mView.findViewById(R.id.item_progress)
 
         }
     }
