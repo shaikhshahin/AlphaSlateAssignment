@@ -1,12 +1,18 @@
 package com.shahin.alphaslatedemo.ui.fragments
 
 class HomeItem {
-    lateinit var desc: String
-    var id: Int = 0
+    lateinit var title: String
+    lateinit var time: String
+    lateinit var date: String
+    lateinit var grade: String
 
 
-    constructor(desc: String, id: Int) {
-        this.desc = desc
-        this.id = id
+
+    constructor(title: String, time: String, date:String, grade:String) {
+        this.title = title
+        this.time = time
+        this.date= date
+        this.grade = grade
+
     }
 }

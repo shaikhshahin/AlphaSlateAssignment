@@ -1,11 +1,11 @@
 package com.shahin.alphaslatedemo.ui.activity
 
-import android.content.Intent
 import android.os.Bundle
 
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -90,9 +90,20 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
 
-        if (id == R.id.action_settings) {
-            startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
+        if (id == R.id.action_cart) {
+            Toast.makeText(this, "Cart clicked", Toast.LENGTH_LONG).show();
+
+            // startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
             return true
+        }else if (id == R.id.action_send) {
+            Toast.makeText(this, "Send clicked", Toast.LENGTH_LONG).show();
+
+            return true
+        }else
+        {
+            Toast.makeText(this, "Notify clicked", Toast.LENGTH_LONG).show();
+
+
         }
 
         return super.onOptionsItemSelected(item)

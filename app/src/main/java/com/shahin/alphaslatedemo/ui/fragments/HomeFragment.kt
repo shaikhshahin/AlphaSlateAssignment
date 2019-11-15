@@ -9,6 +9,7 @@ import android.view.ViewGroup
 
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -36,38 +37,59 @@ class HomeFragment : Fragment() {
         rv_list = ArrayList()
         rv_list!!.add(
             HomeItem(
-                "Home",
-                R.drawable.ic_launcher_background
+                "Maths(CBSC)",
+                "244 Hours",
+                "24-10-2019",
+                "Grade 7"
+
             )
         )
         rv_list!!.add(
             HomeItem(
-                "Dashboard",
-                R.drawable.ic_launcher_background
+                "Maths(ICSC)",
+                "244 Hours",
+                "24-10-2019",
+                "Grade 7"
+
             )
         )
         rv_list!!.add(
             HomeItem(
-                "Notification",
-                R.drawable.ic_launcher_background
+                "Maths(HSC)",
+                "244 Hours",
+                "24-10-2019",
+                "Grade 7"
+
             )
         )
         rv_list!!.add(
             HomeItem(
-                "image",
-                R.drawable.ic_launcher_background
+                "Maths(CBSC)",
+                "244 Hours",
+                "24-10-2019",
+                "Grade 7"
+
+
             )
         )
         rv_list!!.add(
             HomeItem(
-                "Music video",
-                R.drawable.ic_launcher_background
+                "Maths(ICSC)",
+                "244 Hours",
+                "24-10-2019",
+                "Grade 7"
+
+
             )
         )
         rv_list!!.add(
             HomeItem(
-                "Settings",
-                R.drawable.ic_launcher_background
+                "Maths(HSC)",
+                "244 Hours",
+                "24-10-2019",
+                "Grade 7"
+
+
             )
         )
 
@@ -81,5 +103,6 @@ class HomeFragment : Fragment() {
 
         return view
     }
+
 
 }// Required empty public constructor

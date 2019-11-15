@@ -3,7 +3,6 @@ package com.shahin.alphaslatedemo.ui.fragments
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -23,11 +22,16 @@ class HomeRecyclerAdapter(var home_list: List<HomeItem>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val id = home_list[position].id
-        val desc = home_list[position].desc
+        val title = home_list[position].title
+        val time = home_list[position].time
+        val date = home_list[position].date
+        val grade = home_list[position].grade
 
-        holder.desc.text = desc
-        holder.image.setImageResource(id)
+
+        holder.title.text = title
+        holder.time.text = time
+        holder.date.text = date
+        holder.grade.text = grade
 
 
     }
@@ -37,12 +41,18 @@ class HomeRecyclerAdapter(var home_list: List<HomeItem>) :
     }
 
     inner class ViewHolder(private val mView: View) : RecyclerView.ViewHolder(mView) {
-        val desc: TextView
-        val image: ImageView
+        val title: TextView
+        val time: TextView
+        val grade: TextView
+
+        val date: TextView
 
         init {
-            desc = mView.findViewById(R.id.item_desc)
-            image = mView.findViewById(R.id.item_image)
+            title = mView.findViewById(R.id.item_title)
+            time = mView.findViewById(R.id.item_time)
+            date = mView.findViewById(R.id.item_date)
+            grade = mView.findViewById(R.id.item_grade)
+
         }
     }
 }

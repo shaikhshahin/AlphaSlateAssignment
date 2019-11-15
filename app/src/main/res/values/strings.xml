@@ -6,7 +6,11 @@
     <string name="my_courses">my courses</string>
     <string name="exam">exam planner</string>
     <string name="more">more</string>
-
-
+<string name="valid_till">Valid till:</string>
     <string name="settings">Settings</string>
+    <string name="inprogress_text">In Progress</string>
+    <string name="pending_text">Pending</string>
+    <string name="completed_text">Completed</string>
+    <string name="notify_text">notify</string>
+
 </resources>
