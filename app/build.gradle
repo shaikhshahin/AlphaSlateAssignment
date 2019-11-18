@@ -35,7 +35,9 @@ dependencies {
 
     //noinspection GradleCompatible
     implementation 'com.android.support:design:26.1.0'
-    compile 'com.bignerdranch.android:expandablerecyclerview:1.0.3'
+    implementation 'com.bignerdranch.android:expandablerecyclerview:1.0.3'
+    implementation 'com.tubb.smrv:swipemenu-recyclerview:3.0.3'
+
 
 
 }

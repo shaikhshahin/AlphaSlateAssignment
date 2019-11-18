@@ -263,60 +263,6 @@ class HomeFragment : Fragment(),View.OnCreateContextMenuListener {
 
             )
         )
-        /*rv_list!!.add(
-            HomeItem(
-                "Maths(ICSC)",
-                "244 Hours",
-                "24-10-2019",
-                "Grade 7",
-                "In Progress"
-
-            )
-        )
-        rv_list!!.add(
-            HomeItem(
-                "Maths(HSC)",
-                "244 Hours",
-                "24-10-2019",
-                "Grade 7",
-                "Completed"
-
-            )
-        )
-        rv_list!!.add(
-            HomeItem(
-                "Maths(CBSC)",
-                "244 Hours",
-                "24-10-2019",
-                "Grade 7",
-            "Pending"
-
-
-            )
-        )
-        rv_list!!.add(
-            HomeItem(
-                "Maths(ICSC)",
-                "244 Hours",
-                "24-10-2019",
-                "Grade 7",
-            "Completed"
-
-
-            )
-        )
-        rv_list!!.add(
-            HomeItem(
-                "Maths(HSC)",
-                "244 Hours",
-                "24-10-2019",
-                "Grade 7",
-            "In Progress"
-
-
-            )
-        )*/
-
 
         val mAdapter =
             HomeRecyclerAdapter(rv_list as ArrayList<HomeItem>)
@@ -327,38 +273,6 @@ class HomeFragment : Fragment(),View.OnCreateContextMenuListener {
 
         initSwipe()
 
-        //
-/*
-        swipeController = SwipeController(object : SwipeControllerActions() {
-            override fun onRightClicked(position: Int) {
-                //mAdapter.rv_list.remove(position)
-
-                val intent = Intent(getActivity(), SettingsActivity::class.java)
-                getActivity()?.startActivity(intent)
-
-
-                mAdapter.notifyItemRangeChanged(position, mAdapter.itemCount)
-            }
-
-            override fun onLeftClicked(position: Int) {
-                //mAdapter.rv_list.remove(position)
-
-                registerForContextMenu(recyclerView!!)
-
-                mAdapter.notifyItemRangeChanged(position, mAdapter.itemCount)
-            }
-
-        })
-
-        val itemTouchhelper = ItemTouchHelper(swipeController!!)
-        itemTouchhelper.attachToRecyclerView(recyclerView)
-
-        recyclerView!!.addItemDecoration(object : RecyclerView.ItemDecoration() {
-            override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
-                swipeController!!.onDraw(c)
-            }
-        })*/
-        //
 
         return view
     }
@@ -415,6 +329,8 @@ class HomeFragment : Fragment(),View.OnCreateContextMenuListener {
                 if (direction == ItemTouchHelper.LEFT) {
 
                     recyclerView?.let { registerForContextMenu(it) };
+                    recyclerView?.showContextMenu();
+
                 } else {
 
                     val intent = Intent(getActivity(), SettingsActivity::class.java)

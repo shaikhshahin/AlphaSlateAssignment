@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         HomeFragmentMainExpanded()
     internal val fragment2: Fragment = CartFragment()
     internal val fragment3: Fragment = MyCoursesFragment()
-    internal val fragment4: Fragment = ExamPlanner()
+    internal val fragment4: Fragment = HomeFragment()
     internal val fragment5: Fragment = MoreFragment()
 
     internal val fm = supportFragmentManager

@@ -2,14 +2,12 @@ package com.shahin.alphaslatedemo.ui.fragments
 
 import android.content.Context
 import android.os.Build
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.cardview.widget.CardView
 
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -17,9 +15,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shahin.alphaslatedemo.R
 
 import java.util.ArrayList
+import android.view.ContextMenu
+import androidx.recyclerview.widget.ItemTouchHelper.Callback.getDefaultUIUtil
+import com.shahin.alphaslatedemo.ui.fragments.RecyclerDataAdapter.MyViewHolder
+import androidx.recyclerview.widget.ItemTouchHelper
+import android.graphics.Canvas
+import androidx.recyclerview.widget.RecyclerView.Adapter
+
 
 class RecyclerDataAdapter(private val dummyParentDataItems: ArrayList<HomeParentDataItem>) :
-    RecyclerView.Adapter<RecyclerDataAdapter.MyViewHolder>() {
+    Adapter<MyViewHolder>() {
+
+    private var swipeHandler: SwipeHandler? = null
+
+
+
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onCreateViewHolder(
@@ -97,6 +107,8 @@ class RecyclerDataAdapter(private val dummyParentDataItems: ArrayList<HomeParent
         val date: TextView
 
         val time: TextView
+        val card: CardView
+
 
 
 
@@ -108,6 +120,8 @@ class RecyclerDataAdapter(private val dummyParentDataItems: ArrayList<HomeParent
             status = itemView.findViewById(R.id.item_progress)
             date = itemView.findViewById(R.id.item_date)
             time = itemView.findViewById(R.id.item_time)
+            card = itemView.findViewById(R.id.cardView)
+
 
 
             var intMaxNoOfChild = 0
@@ -127,14 +141,18 @@ class RecyclerDataAdapter(private val dummyParentDataItems: ArrayList<HomeParent
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
                 )
-                textView.setOnClickListener(this)
+                textView.setOnClickListener{
+                    itemView.showContextMenu();
+
+                }
                 linearLayout_childItems.addView(textView, layoutParams)
             }
             textView_parentName.setOnClickListener(this)
+            card.setOnClickListener(this)
         }
 
         override fun onClick(view: View) {
-            if (view.id == R.id.parent_item) {
+            if (view.id == R.id.cardView) {
                 if (linearLayout_childItems.visibility == View.VISIBLE) {
                     linearLayout_childItems.visibility = View.GONE
                 } else {
@@ -142,9 +160,108 @@ class RecyclerDataAdapter(private val dummyParentDataItems: ArrayList<HomeParent
                 }
             } else {
                 val textViewClicked = view as TextView
+                itemView.showContextMenu();
+
                 Toast.makeText(context, "" + textViewClicked.text.toString(), Toast.LENGTH_SHORT)
                     .show()
             }
         }
     }
+
+    class SwipeHandler(private val adapter: RecyclerDataAdapter) : ItemTouchHelper.Callback() {
+        private var swipedViewHolder: MyViewHolder? = null
+
+        override fun getMovementFlags(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder
+        ): Int {
+            val myViewHolder = viewHolder as MyViewHolder
+            return if (swipedViewHolder != myViewHolder) {
+                ItemTouchHelper.Callback.makeMovementFlags(0, ItemTouchHelper.LEFT)
+            } else {
+                0
+            }
+        }
+
+        override fun onMove(
+            recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean {
+            return false
+        }
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            undo()
+            swipedViewHolder = viewHolder as MyViewHolder
+            adapter.notifyDataSetChanged()
+        }
+
+        override fun onChildDraw(
+            c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder,
+            dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean
+        ) {
+            if (dX < 0) {
+                val myViewHolder = viewHolder as MyViewHolder
+                getDefaultUIUtil().onDraw(
+                    c,
+                    recyclerView,
+                    myViewHolder.card,
+                    dX / 4,
+                    dY,
+                    actionState,
+                    isCurrentlyActive
+                )
+            }
+        }
+
+        override fun onChildDrawOver(
+            c: Canvas, recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int,
+            isCurrentlyActive: Boolean
+        ) {
+            if (dX < 0) {
+                val myViewHolder = viewHolder as MyViewHolder
+                getDefaultUIUtil().onDrawOver(
+                    c,
+                    recyclerView,
+                    myViewHolder.card,
+                    dX / 4,
+                    dY,
+                    actionState,
+                    isCurrentlyActive
+                )
+            }
+        }
+
+        override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
+            if (viewHolder != null) {
+                val myViewHolder = viewHolder as MyViewHolder?
+                getDefaultUIUtil().onSelected(myViewHolder!!.card)
+            }
+        }
+
+        fun undo() {
+            if (swipedViewHolder != null) {
+                getDefaultUIUtil().clearView(swipedViewHolder!!.card)
+                adapter.notifyDataSetChanged()
+                swipedViewHolder = null
+            }
+        }
+
+        fun remove() {
+            if (swipedViewHolder != null) {
+                getDefaultUIUtil().clearView(swipedViewHolder!!.card)
+                adapter.notifyDataSetChanged()
+                swipedViewHolder = null
+            }
+        }
+    }
+
+    fun setSwipeHandler(swipeHandler: SwipeHandler) {
+        this.swipeHandler = swipeHandler
+    }
+
+
+
+
 }
