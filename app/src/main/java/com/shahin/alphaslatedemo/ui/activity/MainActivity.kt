@@ -13,12 +13,14 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.shahin.alphaslatedemo.R
 import com.shahin.alphaslatedemo.ui.fragments.*
+import com.shahin.alphaslatedemo.ui.fragments.HomeFragmentMainExpanded
 
 
 class MainActivity : AppCompatActivity() {
 
 
-    internal val fragment1: Fragment = HomeFragment()
+    internal val fragment1: Fragment =
+        HomeFragmentMainExpanded()
     internal val fragment2: Fragment = CartFragment()
     internal val fragment3: Fragment = MyCoursesFragment()
     internal val fragment4: Fragment = ExamPlanner()

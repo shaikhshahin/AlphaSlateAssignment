@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:layout_margin="@dimen/activity_horizontal_margin">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/bt_pending"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/btn_height"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/redrectangle"
+            android:gravity="center"
+            android:text="@string/pending_text"
+            android:textAllCaps="false"
+            android:textColor="@color/row_title_color"
+            app:layout_constraintEnd_toStartOf="@+id/bt_progress"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/bt_progress"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/btn_height"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:background="@drawable/yellowrectangle"
+
+            android:gravity="center"
+            android:text="@string/inprogress_text"
+            android:textAllCaps="false"
+            android:textColor="@color/row_title_color"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/bt_pending"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/bt_completed"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/btn_height"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:background="@drawable/greenrectangle"
+
+            android:gravity="center"
+            android:text="@string/completed_text"
+            android:textAllCaps="false"
+            android:textColor="@color/row_title_color"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/bt_progress"
+            tools:ignore="MissingConstraints" />
+
+
+        <ExpandableListView
+            android:id="@+id/home_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            app:layout_constraintStart_toStartOf="@id/bt_pending"
+            app:layout_constraintTop_toBottomOf="@+id/bt_pending">
+
+</ExpandableListView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

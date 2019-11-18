@@ -12,5 +12,6 @@
     <string name="pending_text">Pending</string>
     <string name="completed_text">Completed</string>
     <string name="notify_text">notify</string>
+    <string name="gradetext">Grade 7</string>
 
 </resources>

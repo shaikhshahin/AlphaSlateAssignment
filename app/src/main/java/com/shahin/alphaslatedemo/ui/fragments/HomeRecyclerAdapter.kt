@@ -1,22 +1,30 @@
 package com.shahin.alphaslatedemo.ui.fragments
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.app.Application
+import android.content.Context
+import android.view.*
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 import com.shahin.alphaslatedemo.R
 
 
+
+
 class HomeRecyclerAdapter(var home_list: List<HomeItem>) :
-    RecyclerView.Adapter<HomeRecyclerAdapter.ViewHolder>() {
+    RecyclerView.Adapter<HomeRecyclerAdapter.ViewHolder>(){
+
+    lateinit var context : Context
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.home_item, parent, false)
+
+
+        context=parent.context
 
         return ViewHolder(view)
     }
@@ -60,6 +68,7 @@ class HomeRecyclerAdapter(var home_list: List<HomeItem>) :
         val date: TextView
         val status: TextView
 
+
         init {
             title = mView.findViewById(R.id.item_title)
             time = mView.findViewById(R.id.item_time)
@@ -67,6 +76,11 @@ class HomeRecyclerAdapter(var home_list: List<HomeItem>) :
             grade = mView.findViewById(R.id.item_grade)
             status = mView.findViewById(R.id.item_progress)
 
+
         }
     }
+
+
+
+
 }
