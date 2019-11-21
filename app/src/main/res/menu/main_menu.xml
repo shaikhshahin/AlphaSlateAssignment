@@ -24,7 +24,6 @@
         android:id="@+id/action_notify"
         android:orderInCategory="300"
         android:iconTint="#ffff"
-
         android:title="@string/notify_text"
         android:icon="@drawable/notification"
         app:showAsAction="ifRoom"></item>
